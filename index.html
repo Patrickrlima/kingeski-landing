@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0c0c0d" />
+
+    <!-- ===================== SEO básico ===================== -->
+    <title>Kingeski Barbearia | Barbearia em Osório - RS</title>
+    <meta
+      name="description"
+      content="Kingeski Barbearia, no Centro de Osório - RS. Corte, barba e cuidado masculino com precisão e estilo. Agende seu horário pelo WhatsApp."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Kingeski Barbearia" />
+    <link rel="canonical" href="https://www.kingeskibarbearia.com.br/" />
+    <!-- TODO: troque a URL acima pelo domínio definitivo assim que o site for publicado (aqui e em todas as tags og:url/twitter abaixo). -->
+
+    <!-- ===================== Open Graph ===================== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kingeski Barbearia" />
+    <meta property="og:title" content="Kingeski Barbearia | Barbearia em Osório - RS" />
+    <meta
+      property="og:description"
+      content="Corte, barba e cuidado masculino com precisão e estilo, no Centro de Osório - RS. Agende seu horário."
+    />
+    <meta property="og:url" content="https://www.kingeskibarbearia.com.br/" />
+    <meta property="og:image" content="https://www.kingeskibarbearia.com.br/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+    <!-- TODO: gerar /public/og-image.jpg (1200x630) com uma foto real da barbearia + logo. -->
+
+    <!-- ===================== Twitter Card ===================== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kingeski Barbearia | Barbearia em Osório - RS" />
+    <meta
+      name="twitter:description"
+      content="Corte, barba e cuidado masculino com precisão e estilo, no Centro de Osório - RS."
+    />
+    <meta name="twitter:image" content="https://www.kingeskibarbearia.com.br/og-image.jpg" />
+
+    <!-- ===================== Favicon / PWA ===================== -->
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <!-- TODO: favicon-32.png, apple-touch-icon.png e os ícones do manifest (icon-192.png /
+         icon-512.png) ainda não existem neste projeto — veja public/images/README.md.
+         Enquanto não forem adicionados, o navegador usa o favicon.svg como fallback. -->
+
+    <!-- ===================== Fontes ===================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ===================== Schema.org — BarberShop / LocalBusiness ===================== -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BarberShop",
+        "name": "Kingeski Barbearia",
+        "image": "https://www.kingeskibarbearia.com.br/og-image.jpg",
+        "@id": "https://www.kingeskibarbearia.com.br/",
+        "url": "https://www.kingeskibarbearia.com.br/",
+        "telephone": "+55-51-0000-0000",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. Getúlio Vargas, 1102",
+          "addressLocality": "Osório",
+          "addressRegion": "RS",
+          "addressCountry": "BR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -29.8869,
+          "longitude": -50.2699
+        },
+        "sameAs": ["https://www.instagram.com/kingeskibarbearia/"],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "20:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday"],
+            "opens": "08:00",
+            "closes": "19:00"
+          }
+        ]
+      }
+    </script>
+    <!-- TODO: "telephone" acima é placeholder — troque pelo número real assim que
+         disponível (o mesmo número usado em src/data/business.js). As coordenadas em
+         "geo" são uma aproximação do centro de Osório-RS; ajuste para o ponto exato
+         se quiser mais precisão (pegue no Google Maps: botão "Compartilhar" → link
+         contém as coordenadas). -->
+  </head>
+  <body class="bg-ink text-bone antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  ::selection {
+    background-color: theme('colors.brass.400');
+    color: theme('colors.ink.950');
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply inline-block text-[11px] font-semibold uppercase tracking-widest2 text-brass-400;
+  }
+
+  /* Botão primário — sólido dourado com sweep de brilho na diagonal e
+     recolhimento sutil ao pressionar (feedback tátil, sem deslocar o layout). */
+  .btn-primary {
+    @apply relative inline-flex animate-pulse-glow items-center justify-center overflow-hidden rounded-full
+      bg-brass-400 px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.14em] text-ink-950
+      transition-transform duration-300 ease-premium hover:-translate-y-0.5 active:scale-[0.97] active:translate-y-0;
+  }
+  .btn-primary::before {
+    content: '';
+    @apply pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-[20deg] bg-white/40
+      opacity-0 transition-[transform,opacity] duration-700 ease-premium;
+    transform: translateX(-40%);
+  }
+  .btn-primary:hover::before {
+    opacity: 1;
+    transform: translateX(420%);
+  }
+
+  /* Botão secundário — contorno que se preenche da esquerda pra direita no
+     hover, mantendo a mesma linguagem premium sem competir com o primário. */
+  .btn-outline {
+    @apply relative inline-flex items-center justify-center overflow-hidden rounded-sm border border-bone/30
+      px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.14em] text-bone
+      transition-colors duration-300 ease-premium hover:border-bone/60 active:scale-[0.97];
+  }
+  .btn-outline::before {
+    content: '';
+    @apply absolute inset-0 -z-10 origin-left scale-x-0 bg-bone/10 transition-transform duration-300 ease-premium;
+  }
+  .btn-outline:hover::before {
+    @apply scale-x-100;
+  }
+}
+
+/* Respeita a preferência do usuário por menos movimento: desliga as
+   animações de entrada/scroll/parallax em qualquer lugar da página. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
