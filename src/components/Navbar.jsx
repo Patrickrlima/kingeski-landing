@@ -83,7 +83,7 @@ export default function Navbar() {
 
       <div
         id="mobile-menu"
-        className={`fixed inset-x-0 top-[76px] z-40 origin-top bg-ink-950/98 backdrop-blur-md transition-[transform,opacity] duration-300 ease-premium lg:hidden ${
+        className={`fixed inset-x-0 top-[76px] z-40 origin-top bg-ink-950 backdrop-blur-md transition-[transform,opacity] duration-300 ease-premium lg:hidden ${
           open ? 'pointer-events-auto scale-y-100 opacity-100' : 'pointer-events-none scale-y-95 opacity-0'
         }`}
       >
