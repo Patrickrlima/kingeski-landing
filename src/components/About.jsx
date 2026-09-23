@@ -18,7 +18,6 @@ export default function About() {
 
         <Reveal delay={2} className="order-2 lg:order-1">
           <span className="mb-4 flex items-center gap-3 text-brass-400/70">
-            <span className="h-px w-10 bg-brass-400/40" aria-hidden="true" />
             <span className="eyebrow">A barbearia</span>
           </span>
           <h2 className="font-display text-3xl font-medium leading-[1.05] text-bone sm:text-4xl lg:text-[2.75rem]">

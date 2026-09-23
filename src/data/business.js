@@ -15,8 +15,7 @@ const business = {
   // TODO: cole aqui o link real "Ver no Google" / avaliações do perfil do Google Business da Kingeski.
   googleReviewsUrl: 'https://www.google.com/maps/place/?q=place_id:TODO_KINGESKI_PLACE_ID',
   instagram: 'https://www.instagram.com/kingeskibarbearia/',
-  // TODO: troque pelo número real de WhatsApp da barbearia (formato: 55 + DDD + número, só dígitos).
-  whatsapp: '5551999999999',
+  whatsapp: '5551991287463',
   // TODO: telefone comercial, se houver um diferente do WhatsApp.
   phone: '',
   hours: [

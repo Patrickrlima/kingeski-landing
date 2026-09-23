@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import gallery from '../data/gallery';
 import business from '../data/business';
 import SectionHeading from './SectionHeading';
@@ -27,19 +27,51 @@ const SIZE_CLASSES = {
  * nenhum controle nativo visível (sem botão de play) — e sem áudio: o
  * arquivo em si não tem mais trilha de áudio (removida no processamento),
  * além do atributo `muted`, então não tem como tocar som de jeito nenhum.
+ *
+ * O vídeo só começa a carregar/tocar quando essa seção realmente entra na
+ * tela (`IntersectionObserver` abaixo) e pausa de novo se o usuário rolar
+ * pra longe. Antes ele vinha com `autoPlay` + `preload="auto"`, ou seja,
+ * baixava os ~6,5MB inteiros assim que a página abria — mesmo estando lá
+ * embaixo, fora da tela — ao mesmo tempo que o vídeo do Hero também estava
+ * carregando. No celular isso competia por rede/processamento e travava a
+ * rolagem da página. Com o carregamento adiado pra quando a seção aparece,
+ * esse travamento some.
  */
 function VideoTile() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return undefined;
+
+    const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Reveal lift={false} className="aspect-[9/16] sm:col-span-2 sm:row-span-3 sm:aspect-auto">
       <div className="relative block h-full w-full overflow-hidden bg-ink-800">
         <video
+          ref={videoRef}
           src={asset('/videos/galeria-destaque.mp4')}
           poster={asset('/images/galeria-destaque.jpg')}
-          autoPlay
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           className="absolute inset-0 h-full w-full object-cover object-center"
         >
           Seu navegador não suporta a reprodução de vídeo.
