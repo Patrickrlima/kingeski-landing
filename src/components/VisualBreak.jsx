@@ -13,7 +13,7 @@ export default function VisualBreak() {
           num wrapper próprio, e o SmartImage só preenche esse wrapper. */}
       <div className="absolute inset-0">
         <SmartImage
-          src="/images/destaque.jpg"
+          src="/images/destaque.jpg?v=2"
           alt="Letreiro da Kingeski Barbearia com a coroa dourada, em parede de mármore"
           label="Foto: letreiro Kingeski Barbearia"
           priority={false}
