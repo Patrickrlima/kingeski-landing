@@ -13,7 +13,7 @@ const business = {
     'https://www.google.com/maps/dir/?api=1&destination=' +
     encodeURIComponent('Kingeski Barbearia, Av. Getúlio Vargas, 1102, Centro, Osório - RS'),
   // TODO: cole aqui o link real "Ver no Google" / avaliações do perfil do Google Business da Kingeski.
-  googleReviewsUrl: 'https://www.google.com/maps/place/?q=place_id:TODO_KINGESKI_PLACE_ID',
+  googleReviewsUrl: 'https://share.google/7Y9uNQV1DcEu30sLr',
   instagram: 'https://www.instagram.com/kingeskibarbearia/',
   whatsapp: '5551991287463',
   // TODO: telefone comercial, se houver um diferente do WhatsApp.
