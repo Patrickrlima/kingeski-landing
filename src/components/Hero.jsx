@@ -30,7 +30,7 @@ function SplitLetters({ text, startDelay = 0 }) {
           className="inline-block motion-safe:animate-letterIn motion-safe:opacity-0"
           style={{ animationDelay: `${(startDelay + i * LETTER_STEP).toFixed(3)}s` }}
         >
-          {ch === ' ' ? ' ' : ch}
+          {ch === ' ' ? ' ' : ch}
         </span>
       ))}
     </span>
@@ -66,7 +66,7 @@ function AnimatedHeadline() {
         </p>
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-          
+          <a
             href={buildWhatsappLink('Olá! Quero agendar um horário na Kingeski Barbearia.')}
             target="_blank"
             rel="noopener noreferrer"
@@ -230,7 +230,7 @@ export default function Hero() {
         </div>
       </div>
 
-      
+      <a
         href="#experiencia"
         aria-label="Rolar para o conteúdo"
         className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-bone/50 transition-colors hover:text-brass-400 sm:flex"
