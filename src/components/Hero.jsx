@@ -30,7 +30,7 @@ function SplitLetters({ text, startDelay = 0 }) {
           className="inline-block motion-safe:animate-letterIn motion-safe:opacity-0"
           style={{ animationDelay: `${(startDelay + i * LETTER_STEP).toFixed(3)}s` }}
         >
-          {ch === ' ' ? ' ' : ch}
+          {ch === ' ' ? ' ' : ch}
         </span>
       ))}
     </span>
@@ -48,7 +48,7 @@ function AnimatedHeadline() {
 
   return (
     <>
-      <h1 className="font-display text-[2.7rem] font-medium uppercase leading-[0.98] tracking-tight text-bone sm:text-6xl lg:text-7xl">
+      <h1 className="font-display text-[2.7rem] font-medium uppercase leading-[0.98] tracking-tight text-bone [text-shadow:0_2px_20px_rgba(0,0,0,0.7)] sm:text-6xl lg:text-7xl lg:[text-shadow:none]">
         <span className="sr-only">{`${line1} ${line2}`}</span>
         <SplitLetters text={line1} startDelay={0} />
         <br />
@@ -61,12 +61,12 @@ function AnimatedHeadline() {
         className="motion-safe:animate-fadeUp motion-safe:opacity-0"
         style={{ animationDelay: `${afterHeadlineDelay.toFixed(3)}s` }}
       >
-        <p className="mt-7 max-w-md text-base leading-relaxed text-bone/70 sm:text-lg">
+        <p className="mt-7 max-w-md text-base leading-relaxed text-bone/70 [text-shadow:0_2px_12px_rgba(0,0,0,0.7)] sm:text-lg lg:[text-shadow:none]">
           Barbearia da Kingeski, no Centro de Osório. Precisão em cada corte, cuidado em cada detalhe.
         </p>
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <a
+          
             href={buildWhatsappLink('Olá! Quero agendar um horário na Kingeski Barbearia.')}
             target="_blank"
             rel="noopener noreferrer"
@@ -171,10 +171,18 @@ export default function Hero() {
         )}
       </div>
 
-      {/* Sem nenhum escurecimento por cima do vídeo — nem no celular nem no
-          desktop. A legibilidade do texto vem só do painel/cartão sólido
-          atrás dele (ver abaixo), nunca de uma camada escura sobre o vídeo
-          inteiro. */}
+      {/* No celular/tablet: em vez do cartão desfocado ("vidro") que ficava
+          atrás do texto, um degradê suave escurecendo de baixo pra cima —
+          só na faixa inferior, onde o texto e os botões ficam (o layout já
+          é `items-end`, texto colado no rodapé). Sem blur, sem caixa com
+          cantos/borda visível: o vídeo aparece limpo por trás, só um pouco
+          mais escuro perto do texto, o suficiente pra manter a legibilidade
+          (inclusive do botão "Conhecer a barbearia", que é só contorno).
+          Desliga no desktop (lg+), onde o texto já fica fora do vídeo. */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[75%] bg-gradient-to-t from-ink-950 via-ink-950/55 to-transparent lg:hidden"
+        aria-hidden="true"
+      />
 
       {/* Desktop: o painel de texto (à esquerda) já nasce sobre o fundo
           sólido `bg-ink-950` da própria seção — essa faixa serve só pra
@@ -209,14 +217,12 @@ export default function Hero() {
       </svg>
 
       <div className="container-px relative mx-auto w-full max-w-container pb-20 pt-40 sm:pb-24 lg:pb-0 lg:pt-0">
-        {/* No celular/tablet o texto fica sobre o vídeo (que cobre a seção
-            inteira), então em vez de escurecer o vídeo todo, só o bloco de
-            texto ganha um cartão sólido/desfocado atrás dele — o vídeo em
-            volta fica limpo, sem nenhum efeito escuro. No desktop (lg+) o
-            texto já fica sobre o painel sólido à esquerda (fora do vídeo),
-            então esse cartão é desligado. */}
-        <div className="-mx-5 rounded-2xl bg-ink-950/55 px-5 py-7 backdrop-blur-sm sm:-mx-6 sm:px-6 lg:m-0 lg:max-w-[30rem] lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-0 xl:max-w-[34rem]">
-          <span className="eyebrow mb-6 block text-bone/90 motion-safe:animate-fadeUp motion-safe:opacity-0">
+        {/* A legibilidade agora vem do degradê acima (mobile) + do painel
+            sólido do desktop, então esse bloco não precisa mais de fundo
+            próprio — só um leve text-shadow no texto, pra garantir contraste
+            mesmo num trecho mais claro do vídeo, sem depender só do degradê. */}
+        <div className="lg:max-w-[30rem] xl:max-w-[34rem]">
+          <span className="eyebrow mb-6 block text-bone/90 [text-shadow:0_2px_16px_rgba(0,0,0,0.7)] motion-safe:animate-fadeUp motion-safe:opacity-0 lg:[text-shadow:none]">
             Osório · RS
           </span>
 
@@ -224,7 +230,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <a
+      
         href="#experiencia"
         aria-label="Rolar para o conteúdo"
         className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-bone/50 transition-colors hover:text-brass-400 sm:flex"
