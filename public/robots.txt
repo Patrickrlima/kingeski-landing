@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.kingeskibarbearia.com.br/sitemap.xml
+Sitemap: https://kingeski-barbearia.com.br/sitemap.xml
