@@ -18,7 +18,7 @@ export default function VisualBreak() {
           label="Foto: letreiro Kingeski Barbearia"
           priority={false}
           className="h-full w-full"
-          imgClassName="h-full w-full object-cover object-center"
+          imgClassName="h-full w-full object-contain object-center lg:object-cover"
         />
       </div>
       <div className="absolute inset-0 bg-ink-950/55" aria-hidden="true" />
